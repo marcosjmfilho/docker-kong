@@ -106,7 +106,16 @@ services:
     networks:
       - kong-net
     volumes:
-      - kong_data:/var/lib/postgresql/data
+     - kong_data:/var/lib/postgresql/data
+
+  konga:
+    image: "pantsel/konga"
+    ports:
+      - 1337:1337
+    networks:
+      - kong-net
+    environment:
+      NODE_ENV: "production"
 
 secrets:
   kong_postgres_password:
